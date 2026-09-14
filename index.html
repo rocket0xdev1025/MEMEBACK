@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memecoins Are So Back | $MEMEBACK</title>
+  <meta name="description" content="Memecoins are so back! The memes are flying, the community is growing, and the moon is calling. $MEMEBACK on Solana." />
+  <meta name="theme-color" content="#050814" />
+  <link rel="icon" href="logo.png" />
+  <meta property="og:title" content="Memecoins Are So Back | $MEMEBACK" />
+  <meta property="og:description" content="The memes are flying, the community is growing, and the moon is calling." />
+  <meta property="og:image" content="banner.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            moon: {
+              50: "#f7fbff",
+              100: "#e8eef8",
+              200: "#c9d6ea",
+              300: "#a7bad6",
+              400: "#7f97b8",
+              500: "#5d7699",
+            },
+            lime: {
+              neon: "#7CFF3A",
+              hot: "#39FF14",
+              glow: "#b8ff66",
+            },
+            mag: "#ff2bd6",
+            gold: "#ffcc33",
+            void: "#050814",
+          },
+          fontFamily: {
+            bangers: ["Bangers", "cursive"],
+            orbitron: ["Orbitron", "sans-serif"],
+            inter: ["Inter", "sans-serif"],
+          },
+          dropShadow: {
+            lime: "0 0 18px rgba(124,255,58,0.75)",
+            moon: "0 0 22px rgba(232,238,248,0.45)",
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --ca: "TBA";
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      color: #e8eef8;
+      background: #050814;
+    }
+
+    .scene-bg {
+      background-image:
+        radial-gradient(ellipse 80% 55% at 82% 8%, rgba(232, 238, 248, 0.22), transparent 52%),
+        radial-gradient(ellipse 50% 40% at 12% 88%, rgba(124, 255, 58, 0.12), transparent 55%),
+        linear-gradient(180deg, rgba(5, 8, 20, 0.62) 0%, rgba(5, 8, 20, 0.78) 42%, rgba(5, 8, 20, 0.9) 100%),
+        url("banner.jpg");
+      background-size: cover;
+      background-position: center top;
+    }
+
+    .scanlines::after {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.12) 3px,
+        rgba(0, 0, 0, 0.12) 4px
+      );
+      opacity: 0.28;
+    }
+
+    .halftone {
+      background-image: radial-gradient(rgba(124, 255, 58, 0.09) 1px, transparent 1.2px);
+      background-size: 7px 7px;
+    }
+
+    .lime-stroke {
+      -webkit-text-stroke: 2px #08140a;
+      text-shadow:
+        0 0 8px rgba(124, 255, 58, 0.9),
+        0 0 28px rgba(124, 255, 58, 0.45),
+        3px 4px 0 #07120a;
+    }
+
+    .moon-stroke {
+      -webkit-text-stroke: 1px rgba(8, 12, 24, 0.7);
+      text-shadow:
+        0 0 14px rgba(232, 238, 248, 0.55),
+        3px 4px 0 #0a1020;
+    }
+
+    .glass {
+      background: linear-gradient(180deg, rgba(12, 18, 36, 0.72), rgba(8, 12, 26, 0.84));
+      border: 1px solid rgba(201, 214, 234, 0.28);
+      box-shadow:
+        0 0 0 1px rgba(124, 255, 58, 0.08),
+        0 20px 50px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+    }
+
+    .neon-border {
+      position: relative;
+      border: 1px solid rgba(124, 255, 58, 0.45);
+      box-shadow:
+        0 0 18px rgba(124, 255, 58, 0.22),
+        inset 0 0 24px rgba(124, 255, 58, 0.05);
+    }
+
+    .sticker {
+      transform: rotate(-1.5deg);
+      border: 3px solid #e8eef8;
+      box-shadow:
+        6px 8px 0 #7cff3a,
+        0 18px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .hud-corner {
+      position: absolute;
+      width: 46px;
+      height: 46px;
+      border: 2px solid rgba(232, 238, 248, 0.55);
+      pointer-events: none;
+    }
+    .hud-tl { top: 10px; left: 10px; border-right: 0; border-bottom: 0; }
+    .hud-tr { top: 10px; right: 10px; border-left: 0; border-bottom: 0; }
+    .hud-bl { bottom: 10px; left: 10px; border-right: 0; border-top: 0; }
+    .hud-br { bottom: 10px; right: 10px; border-left: 0; border-top: 0; }
+
+    .float-slow { animation: float 6s ease-in-out infinite; }
+    .float-med { animation: float 4.5s ease-in-out infinite 0.6s; }
+    .pulse-glow { animation: pulseGlow 2.4s ease-in-out infinite; }
+    .flicker { animation: flicker 3.8s steps(2, end) infinite; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 14px rgba(124, 255, 58, 0.35), 0 10px 0 #14330d; }
+      50% { box-shadow: 0 0 28px rgba(124, 255, 58, 0.7), 0 10px 0 #14330d; }
+    }
+
+    @keyframes flicker {
+      0%, 19%, 21%, 100% { opacity: 1; }
+      20% { opacity: 0.55; }
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .marquee-track {
+      animation: marquee 22s linear infinite;
+      width: max-content;
+    }
+
+    .step-num {
+      font-family: "Bangers", cursive;
+      background: #7cff3a;
+      color: #07120a;
+      text-shadow: none;
+    }
+
+    .buy-btn {
+      background: linear-gradient(180deg, #b8ff66 0%, #7cff3a 38%, #39ff14 100%);
+      color: #07120a;
+      box-shadow: 0 0 22px rgba(124, 255, 58, 0.55), 0 8px 0 #1d5c12;
+    }
+    .buy-btn:hover { filter: brightness(1.08); transform: translateY(-2px); }
+    .buy-btn:active { transform: translateY(4px); box-shadow: 0 0 12px rgba(124, 255, 58, 0.4), 0 2px 0 #1d5c12; }
+
+    .chart-btn {
+      background: linear-gradient(180deg, rgba(232, 238, 248, 0.16), rgba(12, 18, 36, 0.7));
+      color: #e8eef8;
+      border: 2px solid rgba(232, 238, 248, 0.7);
+      box-shadow: 0 0 18px rgba(232, 238, 248, 0.18), 0 8px 0 #1a2438;
+    }
+    .chart-btn:hover { background: rgba(232, 238, 248, 0.12); transform: translateY(-2px); }
+
+    .social-orb {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .social-orb:hover {
+      transform: translateY(-3px) scale(1.08);
+      box-shadow: 0 0 22px rgba(124, 255, 58, 0.45);
+    }
+
+    iframe { color-scheme: dark; }
+
+    .toast {
+      transform: translate(-50%, 120%);
+      opacity: 0;
+      transition: all 0.28s ease;
+    }
+    .toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="font-inter overflow-x-hidden">
+  <div class="scene-bg scanlines fixed inset-0 -z-10"></div>
+  <div class="halftone pointer-events-none fixed inset-0 -z-10 opacity-70"></div>
+
+  <header class="sticky top-0 z-50 border-b border-moon-200/15 bg-[#050814]/70 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
+      <a href="#top" class="flex items-center gap-3">
+        <img src="logo.png" alt="MEMEBACK logo" class="h-12 w-12 rounded-xl object-cover ring-2 ring-lime-neon/80 shadow-[0_0_18px_rgba(124,255,58,0.45)]" />
+        <div class="leading-none">
+          <p class="font-orbitron text-[10px] tracking-[0.28em] text-moon-300">SOLANA MEME</p>
+          <p class="font-bangers text-2xl tracking-wide text-moon-50 moon-stroke">$MEMEBACK</p>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-6 text-sm font-semibold text-moon-200 md:flex">
+        <a href="#how-to-buy" class="hover:text-lime-neon">How to Buy</a>
+        <a href="#chart" class="hover:text-lime-neon">Chart</a>
+        <a href="#community" class="hover:text-lime-neon">Community</a>
+      </nav>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="https://t.me/MEMEBACKsol" target="_blank" rel="noopener noreferrer" class="social-orb h-10 w-10 overflow-hidden rounded-full ring-2 ring-moon-100/40">
+          <img src="tg.png" alt="Telegram" class="h-full w-full object-cover" />
+        </a>
+        <a href="https://x.com/MEMEBACKsol" target="_blank" rel="noopener noreferrer" class="social-orb h-10 w-10 overflow-hidden rounded-full bg-black ring-2 ring-moon-100/40">
+          <img src="x.png" alt="X / Twitter" class="h-full w-full object-cover" />
+        </a>
+        <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer" class="buy-btn hidden rounded-xl px-4 py-2 font-bangers text-xl tracking-wide sm:inline-block">Buy Now</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="overflow-hidden border-y border-lime-neon/30 bg-black/50">
+    <div class="marquee-track flex gap-10 whitespace-nowrap py-2 font-bangers text-xl tracking-wider text-lime-neon">
+      <span>MEMECOINS ARE SO BACK</span><span class="text-moon-100">•</span>
+      <span>$MEMEBACK</span><span class="text-moon-100">•</span>
+      <span>THE MEMES ARE FLYING</span><span class="text-moon-100">•</span>
+      <span>THE MOON IS CALLING</span><span class="text-moon-100">•</span>
+      <span>NO SLEEP ONLY GAINS</span><span class="text-moon-100">•</span>
+      <span>LFG</span><span class="text-moon-100">•</span>
+      <span>MEMECOINS ARE SO BACK</span><span class="text-moon-100">•</span>
+      <span>$MEMEBACK</span><span class="text-moon-100">•</span>
+      <span>THE MEMES ARE FLYING</span><span class="text-moon-100">•</span>
+      <span>THE MOON IS CALLING</span><span class="text-moon-100">•</span>
+      <span>NO SLEEP ONLY GAINS</span><span class="text-moon-100">•</span>
+      <span>LFG</span><span class="text-moon-100">•</span>
+    </div>
+  </div>
+
+  <main id="top">
+    <section class="relative mx-auto max-w-6xl px-4 pb-16 pt-10 sm:pt-16">
+      <div class="glass relative overflow-hidden rounded-[28px] px-5 py-10 sm:px-10 sm:py-14">
+        <span class="hud-corner hud-tl"></span>
+        <span class="hud-corner hud-tr"></span>
+        <span class="hud-corner hud-bl"></span>
+        <span class="hud-corner hud-br"></span>
+
+        <div class="relative grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+          <div>
+            <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-lime-neon/40 bg-black/40 px-3 py-1 font-orbitron text-[10px] uppercase tracking-[0.25em] text-lime-neon flicker">
+              <span class="h-2 w-2 rounded-full bg-lime-neon shadow-[0_0_10px_#7CFF3A]"></span>
+              We're so back baby
+            </div>
+
+            <p class="font-orbitron text-xs tracking-[0.35em] text-moon-300">PROJECT // MEMECOINS ARE SO BACK</p>
+            <h1 class="mt-2 font-bangers text-6xl leading-[0.9] text-moon-50 moon-stroke sm:text-7xl lg:text-8xl">
+              MEMECOINS
+              <span class="block text-lime-neon lime-stroke">ARE SO BACK</span>
+            </h1>
+            <p class="mt-2 font-orbitron text-lg font-black tracking-[0.2em] text-gold">$MEMEBACK</p>
+
+            <p class="mt-6 max-w-xl text-lg leading-relaxed text-moon-100">
+              Memecoins are so back! The memes are flying, the community is growing, and the moon is calling.
+              Strap in, degen — $MEMEBACK is the signal that the culture never left. It just went quieter before the next launch.
+            </p>
+
+            <div class="mt-7 rounded-2xl border border-moon-200/25 bg-black/45 p-3 sm:p-4">
+              <div class="mb-2 flex items-center justify-between gap-3">
+                <p class="font-orbitron text-[10px] tracking-[0.28em] text-moon-300">CONTRACT ADDRESS</p>
+                <p class="text-[10px] uppercase tracking-widest text-lime-neon">Copy available CA</p>
+              </div>
+              <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <code id="ca-display" class="min-w-0 flex-1 truncate rounded-xl bg-[#070b16] px-3 py-3 font-orbitron text-sm text-moon-50 sm:text-base">TBA</code>
+                <button id="copy-ca" type="button" class="shrink-0 rounded-xl border border-lime-neon/60 bg-lime-neon/10 px-5 py-3 font-bangers text-xl tracking-wide text-lime-neon hover:bg-lime-neon hover:text-void">
+                  Copy CA
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer" class="buy-btn pulse-glow inline-flex items-center rounded-2xl px-7 py-4 font-bangers text-3xl tracking-wide">
+                Buy Now
+              </a>
+              <a href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener noreferrer" class="chart-btn inline-flex items-center rounded-2xl px-7 py-4 font-bangers text-3xl tracking-wide">
+                Chart
+              </a>
+            </div>
+          </div>
+
+          <div class="relative mx-auto w-full max-w-md">
+            <div class="absolute -right-4 -top-6 z-10 rotate-12 rounded-xl bg-lime-neon px-3 py-2 font-bangers text-xl text-void shadow-[4px_4px_0_#fff]">
+              TO THE MOON
+            </div>
+            <img src="logo.png" alt="Memecoins Are So Back artwork" class="sticker float-slow w-full rounded-[28px] object-cover" />
+            <div class="absolute -bottom-4 -left-3 -rotate-6 rounded-xl border-2 border-moon-100 bg-mag px-3 py-2 font-bangers text-lg text-moon-50">
+              LFG DEGENS
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 grid gap-3 sm:grid-cols-3">
+          <div class="rounded-2xl border border-moon-200/20 bg-black/35 px-4 py-4">
+            <p class="font-orbitron text-[10px] tracking-[0.25em] text-moon-300">STATUS</p>
+            <p class="font-bangers text-3xl text-lime-neon">SO BACK</p>
+          </div>
+          <div class="rounded-2xl border border-moon-200/20 bg-black/35 px-4 py-4">
+            <p class="font-orbitron text-[10px] tracking-[0.25em] text-moon-300">CHAIN</p>
+            <p class="font-bangers text-3xl text-moon-50">SOLANA</p>
+          </div>
+          <div class="rounded-2xl border border-moon-200/20 bg-black/35 px-4 py-4">
+            <p class="font-orbitron text-[10px] tracking-[0.25em] text-moon-300">VIBES</p>
+            <p class="font-bangers text-3xl text-gold">MAX LFG</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-to-buy" class="mx-auto max-w-6xl px-4 pb-16">
+      <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="font-orbitron text-xs tracking-[0.3em] text-lime-neon">MISSION BRIEFING</p>
+          <h2 class="font-bangers text-5xl text-moon-50 moon-stroke sm:text-6xl">How to Buy $MEMEBACK</h2>
+          <p class="mt-2 max-w-2xl text-moon-200">Four degen-proof steps on Solana. The memes are flying — don't watch from Earth.</p>
+        </div>
+        <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer" class="buy-btn rounded-xl px-5 py-3 font-bangers text-2xl">Buy Now</a>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <article class="glass relative rounded-3xl p-5">
+          <span class="step-num absolute -top-3 -left-2 flex h-12 w-12 items-center justify-center rounded-full text-2xl ring-4 ring-void">1</span>
+          <h3 class="mt-6 font-bangers text-3xl text-lime-neon">Get a Solana wallet</h3>
+          <p class="mt-3 text-sm leading-relaxed text-moon-200">Install Phantom or Solflare. Create a wallet and lock down your seed phrase like it's the last pizza slice.</p>
+        </article>
+        <article class="glass relative rounded-3xl p-5">
+          <span class="step-num absolute -top-3 -left-2 flex h-12 w-12 items-center justify-center rounded-full text-2xl ring-4 ring-void">2</span>
+          <h3 class="mt-6 font-bangers text-3xl text-lime-neon">Load it with SOL</h3>
+          <p class="mt-3 text-sm leading-relaxed text-moon-200">Buy SOL on an exchange or on-ramp, then send it to your wallet. SOL is the fuel. The moon does not run on fiat.</p>
+        </article>
+        <article class="glass relative rounded-3xl p-5">
+          <span class="step-num absolute -top-3 -left-2 flex h-12 w-12 items-center justify-center rounded-full text-2xl ring-4 ring-void">3</span>
+          <h3 class="mt-6 font-bangers text-3xl text-lime-neon">Open the swap</h3>
+          <p class="mt-3 text-sm leading-relaxed text-moon-200">Hit <span class="text-lime-neon">Buy Now</span>. Pump.fun opens with SOL already set as input so you can ape without wandering the map.</p>
+        </article>
+        <article class="glass relative rounded-3xl p-5">
+          <span class="step-num absolute -top-3 -left-2 flex h-12 w-12 items-center justify-center rounded-full text-2xl ring-4 ring-void">4</span>
+          <h3 class="mt-6 font-bangers text-3xl text-lime-neon">Swap for $MEMEBACK</h3>
+          <p class="mt-3 text-sm leading-relaxed text-moon-200">Paste the CA, confirm $MEMEBACK, pick your size, and swap. The community is growing and the moon is calling — answer it.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="chart" class="mx-auto max-w-6xl px-4 pb-16">
+      <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="font-orbitron text-xs tracking-[0.3em] text-moon-300">LIVE FEED</p>
+          <h2 class="font-bangers text-5xl text-moon-50 moon-stroke sm:text-6xl">Chart</h2>
+          <p class="mt-2 text-moon-200">Watch the candles. Memecoins are so back, and this is where the flight path shows.</p>
+        </div>
+        <a href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener noreferrer" class="chart-btn rounded-xl px-5 py-3 font-bangers text-2xl">Open Dexscreener</a>
+      </div>
+
+      <div class="neon-border overflow-hidden rounded-[28px] bg-black/50">
+        <iframe
+          title="Dexscreener chart for $MEMEBACK"
+          src="https://dexscreener.com/solana/TBA?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"
+          class="h-[540px] w-full border-0"
+          allow="clipboard-write"
+        ></iframe>
+      </div>
+    </section>
+
+    <section id="community" class="mx-auto max-w-6xl px-4 pb-20">
+      <div class="glass relative overflow-hidden rounded-[28px] px-6 py-12 text-center sm:px-10">
+        <span class="hud-corner hud-tl"></span>
+        <span class="hud-corner hud-tr"></span>
+        <span class="hud-corner hud-bl"></span>
+        <span class="hud-corner hud-br"></span>
+        <p class="font-orbitron text-xs tracking-[0.3em] text-lime-neon">SQUAD UP</p>
+        <h2 class="mt-2 font-bangers text-5xl text-moon-50 moon-stroke sm:text-6xl">The moon is calling</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-moon-100">
+          Memecoins are so back! The memes are flying, the community is growing, and the moon is calling.
+          Jump in, share the chaos, and keep the candles green.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a href="https://t.me/MEMEBACKsol" target="_blank" rel="noopener noreferrer" class="social-orb flex items-center gap-3 rounded-2xl border border-moon-200/30 bg-black/40 px-5 py-3">
+            <img src="tg.png" alt="" class="h-10 w-10 rounded-full object-cover" />
+            <span class="font-bangers text-2xl tracking-wide text-moon-50">Telegram</span>
+          </a>
+          <a href="https://x.com/MEMEBACKsol" target="_blank" rel="noopener noreferrer" class="social-orb flex items-center gap-3 rounded-2xl border border-moon-200/30 bg-black/40 px-5 py-3">
+            <img src="x.png" alt="" class="h-10 w-10 rounded-full object-cover" />
+            <span class="font-bangers text-2xl tracking-wide text-moon-50">Twitter / X</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-moon-200/15 bg-black/60 py-8 text-center">
+    <div class="mx-auto flex max-w-6xl flex-col items-center gap-3 px-4">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="" class="h-9 w-9 rounded-lg object-cover ring-1 ring-lime-neon/60" />
+        <p class="font-bangers text-2xl tracking-wide text-moon-50">$MEMEBACK</p>
+      </div>
+      <p class="text-xs text-moon-400">Memecoins Are So Back. For entertainment. DYOR. Not financial advice. NFA / DYOR.</p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast glass pointer-events-none fixed bottom-6 left-1/2 z-[80] rounded-full px-5 py-3 font-bangers text-xl tracking-wide text-lime-neon">
+    CA copied. We're so back.
+  </div>
+
+  <script>
+    const CA = "TBA";
+    const copyBtn = document.getElementById("copy-ca");
+    const caDisplay = document.getElementById("ca-display");
+    const toast = document.getElementById("toast");
+    caDisplay.textContent = CA;
+
+    async function copyCA() {
+      try {
+        await navigator.clipboard.writeText(CA);
+      } catch (err) {
+        const range = document.createRange();
+        range.selectNodeContents(caDisplay);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand("copy");
+        selection.removeAllRanges();
+      }
+      toast.classList.add("show");
+      copyBtn.textContent = "Copied!";
+      setTimeout(() => {
+        toast.classList.remove("show");
+        copyBtn.textContent = "Copy CA";
+      }, 1800);
+    }
+
+    copyBtn.addEventListener("click", copyCA);
+    caDisplay.addEventListener("click", copyCA);
+  </script>
+</body>
+</html>
